@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <title>Go Web</title>
+    </head>
+    <body>
+        {{/* template comment, will not be showed in the web*/}}
+        <p>package info: </p>
+        <ul>
+            {{/*<li>Package name: {{.Name}}</li>*/}}
+            {{/*<li>Number of functions: {{.NumFuncs}}</li>*/}}
+            {{/*<li>Number of variable: {{.NumFuncs}}</li>*/}}
+
+
+            {{if gt .Score 90}}
+                    score is A
+            {{else if gt .Score 80}}
+                    score is B
+            {{else}}
+                    pass
+            {{end}}
+            {{/*用with可以从根目录到score目录下*/}}
+            {{with .Score}}
+                {{if gt . 90}}
+                    score is A
+                {{else if gt . 80}}
+                    score is B
+                {{else}}
+                    pass
+                {{end}}
+            {{end}}
+
+            {{with .Request}}
+                {{/*用range 遍历map */}}
+                {{range $key, $value := .Header}}
+                    <p>
+                        {{/*注意要加上$, 因为这个作用域是map里面*/}}
+                        Method: {{$.Method}}
+                        Key: {{$key}}
+                    </p>
+                    <p>
+                        Value:
+                        <ul>
+                            {{range $value}}
+                                {{.}}
+                            {{end}}
+                        </ul>
+
+                    </p>
+                {{end}}
+            {{end}}
+
+                {{/*参考命令*/}}
+            {{/*gowalker.org/text/template*/}}
+        </ul>
+    </body>
+</html>
