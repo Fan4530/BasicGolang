@@ -1,4 +1,4 @@
-package main
+package BasicGolang
 
 import (
 	"fmt"
@@ -13,6 +13,7 @@ type people struct {
 	name string
 	age int
 }
+//还未总结
 func main() {
 
 	//var s string
